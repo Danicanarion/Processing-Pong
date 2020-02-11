@@ -22,24 +22,29 @@ class Ball{
     this.position.y += this.velocity.y;
   }
   
-  void updateVelocity(float vx, float vy){
+  void setPosition(float x, float y){
+    this.position.x = x;
+    this.position.y = y;
+  }
+  
+  void setVelocity(float vx, float vy){
     this.velocity.x = vx;
     this.velocity.y = vy;
   }
   
   int checkEdges(){
     if (this.position.x > width - this.radius){
-      setup();
       return 0;
     } else if (this.position.x < this.radius/2){
-      setup();
       return 1;
     }
     
-    if (this.position.y > height-40 - this.radius){
+    if (this.position.y >= height -5 - this.radius){
       this.velocity.y = -this.velocity.y;
-    } else if (this.position.y < 40){
+      return 2;
+    } else if (this.position.y <= 5){
       this.velocity.y = -this.velocity.y;
+      return 2;
     }
     
     return -1;

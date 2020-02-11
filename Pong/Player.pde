@@ -1,7 +1,7 @@
 class Player{
   PVector position;
   PVector size;
-  int score;
+  int score = 0;
   
   Player(float x, float y, float pheight, float pwidth){
     position = new PVector(x,y);
@@ -17,15 +17,27 @@ class Player{
     position.y += dy;
   }
   
+  void setPosition(float x, float y){
+    this.position.x = x;
+    this.position.y = y;
+  }
+  
   void updateScore(){
     this.score++;
   }
   
+  void setScore(int score){
+    this.score = score;
+  }
+  int getScore(){
+    return this.score;
+  }
+  
   void checkEdges(){
-    if (this.position.y < 45){
-      this.position.y = 45;
-    } else if (this.position.y + this.size.y > height-45){
-      this.position.y = height - (this.size.y +45);
+    if (this.position.y < 5){
+      this.position.y = 5;
+    } else if (this.position.y + this.size.y > height-5){
+      this.position.y = height - (this.size.y +5);
     } 
   }
 }
