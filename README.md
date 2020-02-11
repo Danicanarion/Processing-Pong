@@ -11,9 +11,9 @@ Aquí puede verse el juego en ejecución:
 
 ## Implementación
 Este clon de Pong se vale de 3 clases.
-**1. Pong:** Implementa la lógica del juego, registra la entrada, dibuja los gráficos y maneja el audio.
-**2. Ball:** Almacena la información de la bola y la lógica de la bola.
-**3. Player:** Almacena la información y la lógica del jugador.
+1. **Pong:** Implementa la lógica del juego, registra la entrada, dibuja los gráficos y maneja el audio.
+2. **Ball:** Almacena la información de la bola y la lógica de la bola.
+3. **Player:** Almacena la información y la lógica del jugador.
 
 También se hace uso de la librería *processing.sound* para la reproducción de los sonidos.
 
