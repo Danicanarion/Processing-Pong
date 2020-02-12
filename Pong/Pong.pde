@@ -24,6 +24,7 @@ boolean player2won = false;
 boolean inIntro = true;
 boolean inGame = false;
 boolean inMenu = false;
+boolean paused = false;
 boolean inWinScreen = false;
 
 void setup(){
@@ -52,6 +53,8 @@ void draw(){
     introScreen();
   } else if(inWinScreen) {
     winScreen();
+  }else if(paused){
+    pauseScreen();
   }else if(inGame){
     background(0);  
     
@@ -111,10 +114,11 @@ void introScreen(){
   textFont(pongFont, 64);
   textSize(256);
   textAlign(CENTER, CENTER);
-  text("Pong", width/2 + 40, height/2 - 100);
+  text("Pong", width/2 + 40, height/2 - 150);
   textSize(64);
-  text("Press SPACE to play", width/2 + 30, height/2 + 100);
-  text("Player 1: \tW-S to move \nPlayer 2: \tArrow keys to move  ", width/2 + 30, height/2 + 200);
+  text("Press SPACE to play", width/2 + 30, height/2);
+  text("Player 1: \tW-S to move \nPlayer 2: \tArrow keys to move  ", width/2 + 30, height/2 + 100);
+  text("Press G to pause", width/2 + 30, height/2 + 200);
 }
 
 void winScreen(){
@@ -129,6 +133,16 @@ void winScreen(){
   text(phrase, width/2 + 10, height/2 - 100);
   textSize(64);
   text("Press SPACE to play", width/2, height/2 + 100);
+}
+
+void pauseScreen(){
+  background(0);
+  textFont(pongFont, 64);
+  textSize(128);
+  textAlign(CENTER, CENTER);
+  text("Game Paused", width/2 + 10, height/2 - 100);
+  textSize(64);
+  text("Press G to resume", width/2, height/2 + 100);
 }
 
 void displayScore(){
@@ -199,6 +213,14 @@ void keyPressed() {
     player2Up = true;
   } else if (keyCode == DOWN) {
     player2Down = true;
+  }
+  
+  if ((key == 'G' || key == 'g') && inGame){
+    paused = true;
+    inGame = false;
+  } else if((key == 'G' || key == 'g') && paused){
+    paused = false;
+    inGame = true;
   }
 }
 
